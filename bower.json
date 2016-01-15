@@ -1,0 +1,23 @@
+{
+  "name": "angular-start",
+  "authors": [
+    "marioosh <marioosh.net@gmail.com>"
+  ],
+  "description": "angular starter project",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.2.0",
+    "angular": "~1.4.8"
+  }
+}

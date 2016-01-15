@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <title>{{title}}</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sticky-footer.css" rel="stylesheet">
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>    
+  </head>
+  <body>
+
+  	<!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Angular JS</h1>
+      </div>
+
+  		<div ng-controller="HelloController">
+        {{hello}}
+  	  </div>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/modules/main/mainModule.js"></script>
+    <script src="js/modules/main/js/controllers.js"></script>
+    <script src="js/modules/main/js/services.js"></script>
+
+  </body>
+</html>
