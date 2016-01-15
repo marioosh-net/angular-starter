@@ -3,11 +3,11 @@
 angular.module('app.main.controllers', [])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/hello', {
-    templateUrl: 'js/modules/main/views/hello.html',
+    templateUrl: 'views/hello.html',
     controller: 'HelloController'
   })
   .when('/welcome', {
-    templateUrl: 'js/modules/main/views/welcome.html',
+    templateUrl: 'views/welcome.html',
     controller: 'WelcomeController'
   });
 }])
