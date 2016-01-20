@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('app.main.controllers', [])
-.config(['$routeProvider', function($routeProvider) {
+angular.module('app.main.controllers', ['app.main.const'])
+.config(['$routeProvider', 'VIEWS_PATH', function($routeProvider, VIEWS_PATH) {
   $routeProvider.when('/hello', {
-    templateUrl: 'js/modules/main/views/hello.html',
+    templateUrl: VIEWS_PATH+'/hello.html',
     controller: 'HelloController'
   })
   .when('/welcome', {
-    templateUrl: 'js/modules/main/views/welcome.html',
+    templateUrl: VIEWS_PATH+'/welcome.html',
     controller: 'WelcomeController'
   });
 }])
