@@ -1,0 +1,19 @@
+{
+  "name": "angular-start",
+  "private": true,
+  "version": "1.0.0",
+  "description": "angular starter project",
+  "author": "marioosh",
+  "license": "MIT",  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marioosh-net/angular-starter.git"
+  },
+  "devDependencies": {
+    "bower": "^1.3.1",
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1"
+  }
+}
