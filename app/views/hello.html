@@ -1,2 +1,11 @@
-{{hello}}
+<form>
+	<div class="form-group">
+		<input class="form-control" ng-model="user.name" placeholder="Name"/>
+	</div>
+	<div class="form-group">
+		<input class="form-control" ng-model="user.surname" placeholder="Surname"/>
+	</div>
+	<input type="submit" ng-click="helloController.send()" class="btn btn-primary"/>
+</form>
+<br/>{{hello + ' '+ user.name}}
 <br/><a href="#/welcome">&gt; welcome page</a>
