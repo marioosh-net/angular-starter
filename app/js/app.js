@@ -2,7 +2,8 @@
 
 angular.module('app',[
 	'ngRoute',
-	'mainModule'
+	'mainModule',
+	'mapsModule'
 ])
 .config(['$routeProvider', function($routeProvider) {
 	// when no route match found 
