@@ -13,14 +13,7 @@
 	</div>
 </div>
 
-<div class="row" ng-show="weather">
-	<div class="col-md-12">
-		<h3>{{weather.name}}</h3>
-		Temperature: {{weather.main.temp}}<br/>
-	Humidity: {{weather.main.humidity}}<br/>
-	Pressure: {{weather.main.pressure}}
-	</div>
-</div>
+<div ng-include="'views/weather-info.html'"/>
 
 <div class="row" ng-show="weather">
 	<div class="col-md-12">	
