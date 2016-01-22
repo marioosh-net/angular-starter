@@ -14,15 +14,15 @@ angular.module('app.main.directives', ['restModule'])
 })
 
 /**
- * current-
+ * current-weather
  */
-.directive('currentWeatherInWarsaw', ['WeatherService', function(WeatherService){
+.directive('currentWeather', ['WeatherService', function(WeatherService){
 	return {
 		restrict: 'AEC', // directive can be used as an attribute, a HTML element or class.
 		replace: true, // generated template will replace the HTML element on which the directive is applied
 		templateUrl: 'views/weather-info.html',
 		controller: function ($scope, $element, $attrs, $transclude) {
-			WeatherService.currentWeather('Warsaw')
+			WeatherService.currentWeather($attrs.city)
 		    .success(function(data,status,config,headers){
 		    	$scope.weather = data;
     		});			
