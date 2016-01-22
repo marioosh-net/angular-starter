@@ -1,3 +1,14 @@
-{{welcome}}
-<br/><a href="#/hello">&gt; hello page</a>
-{{message}}
+<h4>2-way Data Binding</h4>
+<form class="">
+	<div class="form-group">
+		<input class="form-control" ng-model="user.name" placeholder="Name"/>
+	</div>
+	<div class="form-group">
+		<input class="form-control" ng-model="user.surname" placeholder="Surname"/>
+	</div>
+	<div class="form-group">
+		<div ng-show="user.name || user.surname">{{'Welcome' + ' ' + user.name + ' ' + user.surname + ' !'}}</div>
+	</div>
+	<input type="submit" ng-click="welcomeController.send()" class="btn btn-primary"/>
+</form>
+

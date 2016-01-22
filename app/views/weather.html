@@ -1,1 +1,29 @@
-weather.html
+<h4>Weather API</h4>
+
+<p class="text-danger" ng-show="error">{{error}}</p>
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-inline">
+			<div class="form-group">
+				<input class="form-control" ng-model="city" placeholder="City"/>
+			</div>
+			<input type="submit" ng-click="weatherController.getWeather()" class="btn btn-primary" value="Get Weather"/>
+		</form>
+	</div>
+</div>
+
+<div class="row" ng-show="weather">
+	<div class="col-md-12">
+		<h3>{{weather.name}}</h3>
+		Temperature: {{weather.main.temp}}<br/>
+	Humidity: {{weather.main.humidity}}<br/>
+	Pressure: {{weather.main.pressure}}
+	</div>
+</div>
+
+<div class="row" ng-show="weather">
+	<div class="col-md-12">	
+		<pre>{{weather.formatted}}</pre>  	
+	</div>
+</div>

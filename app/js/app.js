@@ -5,8 +5,8 @@ angular.module('app',[
 	'mainModule'
 ])
 .config(['$routeProvider', function($routeProvider) {
-  // when no route match found 
-  $routeProvider.otherwise({redirectTo: '/hello'});
+	// when no route match found 
+	$routeProvider.otherwise({redirectTo: '/hello'});
 }])
 .run(function($rootScope){
 	// when all modules loaded
