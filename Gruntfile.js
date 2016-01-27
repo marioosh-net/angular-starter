@@ -41,6 +41,9 @@ module.exports = function (grunt) {
           interrupt: true
         },
       },
+    },
+    jshint: {
+      all: ['Gruntfile.js', 'app/js/**/*.js']
     }    
   });
 
@@ -52,6 +55,9 @@ module.exports = function (grunt) {
 
   // Load the plugin that provides the "watch" task.
   grunt.loadNpmTasks('grunt-contrib-watch');  
+
+    // Load the plugin that provides the "jshint" task.
+  grunt.loadNpmTasks('grunt-contrib-jshint');  
 
   // Default task(s).
   grunt.registerTask('default', ['uglify', 'concat']);
