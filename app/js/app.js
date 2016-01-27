@@ -9,7 +9,7 @@ angular.module('app',[
 	// when no route match found 
 	$routeProvider.otherwise({redirectTo: '/hello'});
 }])
-.run(function($rootScope){
+.run(['$rootScope', function($rootScope){
 	// when all modules loaded
 	$rootScope.title = 'Angular Starter';
-});
+}]);
