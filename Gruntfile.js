@@ -31,7 +31,17 @@ module.exports = function (grunt) {
         src: ['app/js/**/*.js'],
         dest: 'app/js-dist/full.js',
       }      
-    }
+    },
+    watch: {
+      scripts: {
+        files: ['app/js/**/*.js'],
+        tasks: ['uglify', 'concat'],
+        options: {
+          spawn: false,
+          interrupt: true
+        },
+      },
+    }    
   });
 
   // Load the plugin that provides the "uglify" task.
@@ -39,6 +49,9 @@ module.exports = function (grunt) {
 
   // Load the plugin that provides the "concat" task.
   grunt.loadNpmTasks('grunt-contrib-concat');
+
+  // Load the plugin that provides the "watch" task.
+  grunt.loadNpmTasks('grunt-contrib-watch');  
 
   // Default task(s).
   grunt.registerTask('default', ['uglify', 'concat']);
