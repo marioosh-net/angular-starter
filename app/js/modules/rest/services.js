@@ -17,4 +17,4 @@ angular.module('app.rest.services', [])
 	};
 }])
 .value('API_ENDPOINT', 'http://api.openweathermap.org/data/2.5')
-.value('API_KEY', 'e320bbc901b8e628166648a3192554b0');
+.value('API_KEY', 'fb7979b3a864ca06f840281c7384e65e');
