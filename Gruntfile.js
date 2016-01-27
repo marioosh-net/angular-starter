@@ -5,7 +5,6 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
         mangle: true
       },
       build: {
@@ -17,13 +16,31 @@ module.exports = function (grunt) {
           ext: '.min.js'
         }]
       }
+    },
+    concat: {
+      options: {
+        stripBanners: true,
+        separator: ';',
+        banner: '/*!\n * <%= pkg.name %> v<%= pkg.version %>\n */\n'
+      },
+      dist: {
+        src: ['app/js-min/**/*.js'],
+        dest: 'app/js-dist/full.min.js',
+      },
+      dev: {
+        src: ['app/js/**/*.js'],
+        dest: 'app/js-dist/full.js',
+      }      
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
+  // Load the plugin that provides the "concat" task.
+  grunt.loadNpmTasks('grunt-contrib-concat');
+
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['uglify', 'concat']);
 
 };
