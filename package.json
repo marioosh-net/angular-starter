@@ -20,5 +20,8 @@
     "postinstall": "bower install & grunt -v",
     "prestart": "npm install",    
     "start": "http-server app -o -a localhost -p 8000 -c-1"
+  },
+  "engines": {
+    "node": "0.10.17"
   }
 }
