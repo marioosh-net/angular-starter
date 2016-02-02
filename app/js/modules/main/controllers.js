@@ -66,7 +66,7 @@ angular.module('app.main.controllers', [])
       {user: $scope.user,
         urlParam: 'This is url param'
       });
-  }
+  };
 
 }])
 .controller('WeatherController', ['$scope', 'WeatherService', function($scope, WeatherService) {
@@ -91,7 +91,7 @@ angular.module('app.main.controllers', [])
     .error(function(data,status,config,headers){
       $scope.error = data.message;
     });  
-  }
+  };
 }])
 .controller('DetailsController', ['$scope', '$stateParams', function($scope, $stateParams){
   $scope.user = $stateParams.user;
