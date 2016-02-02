@@ -5,21 +5,37 @@ angular.module('app.main.controllers', [])
 /**
  * routes
  */
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/hello', {
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider
+  .state('hello', {
+    url: '/hello',
     templateUrl: 'views/hello.html',
     controller: 'HelloController',
     controllerAs: 'helloController'
   })
-  .when('/welcome', {
+  .state('welcome', {
+    url: '/welcome',
     templateUrl: 'views/welcome.html',
     controller: 'WelcomeController'
   })
-  .when('/weather', {
+  .state('weather', {
+    url: '/weather',
     templateUrl: 'views/weather.html',
     controller: 'WeatherController',
     controllerAs: 'weatherController'
-  });
+  })
+  .state('states', {
+    url: '/states',
+    templateUrl: 'views/states.html'
+  })
+  .state('state1', {
+    url: '/state1', // state accessible on http://..../#/state1 (href generated automatically by ui-sref attr)
+    templateUrl: 'views/state1.html'
+  })
+  .state('state2', {
+    url: '/stateTwo', // state accessible on http://..../#/stateTwo
+    templateUrl: 'views/state2.html'
+  })
 }])
 
 /**

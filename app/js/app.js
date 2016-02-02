@@ -2,12 +2,20 @@
 
 angular.module('app',[
 	'ngRoute',
+	'ui.router', /* State-based routing for AngularJS */
 	'mainModule',
 	'mapsModule'
 ])
-.config(['$routeProvider', function($routeProvider) {
+.config(['$urlRouterProvider', function($urlRouterProvider) {
 	// when no route match found 
-	$routeProvider.otherwise({redirectTo: '/hello'});
+	$urlRouterProvider.otherwise('/hello');
+
+	// the same using function
+	if(false) // off
+	$urlRouterProvider.otherwise(function($injector, $location){
+		// $location.path('/hello');
+		return 'hello';
+    });
 }])
 .run(['$rootScope', function($rootScope){
 	// when all modules loaded
