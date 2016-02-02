@@ -16,7 +16,8 @@ angular.module('app.main.controllers', [])
   .state('welcome', {
     url: '/welcome',
     templateUrl: 'views/welcome.html',
-    controller: 'WelcomeController'
+    controller: 'WelcomeController',
+    controllerAs: 'welcomeController'
   })
   .state('weather', {
     url: '/weather',
@@ -36,6 +37,12 @@ angular.module('app.main.controllers', [])
     url: '/stateTwo', // state accessible on http://..../#/stateTwo
     templateUrl: 'views/state2.html'
   })
+  .state('details', {
+    url: '/details/:urlParam',
+    params: {user: null}, // when need pass some data from state to state, but params are not in url (/:param1/?param2=...)
+    templateUrl: 'views/details.html',
+    controller: 'DetailsController'
+  });
 }])
 
 /**
@@ -45,14 +52,20 @@ angular.module('app.main.controllers', [])
   // model
   $scope.hello = 'Hello World!';
 }])
-.controller('WelcomeController', ['$scope', function($scope) {  
+.controller('WelcomeController', ['$scope', '$state', function($scope, $state) {  
   $scope.user = {
     name: '',
     surname: ''
   };
 
   this.send = function() {
-    console.log($scope.user);
+
+    // transition to new state
+    $state.go('details', 
+      // object that is used to pass $stateParams to the new state
+      {user: $scope.user,
+        urlParam: 'This is url param'
+      });
   }
 
 }])
@@ -79,4 +92,8 @@ angular.module('app.main.controllers', [])
       $scope.error = data.message;
     });  
   }
+}])
+.controller('DetailsController', ['$scope', '$stateParams', function($scope, $stateParams){
+  $scope.user = $stateParams.user;
+  $scope.urlParam = $stateParams.urlParam;
 }]);
