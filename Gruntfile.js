@@ -44,7 +44,38 @@ module.exports = function (grunt) {
     },
     jshint: {
       all: ['Gruntfile.js', 'app/js/**/*.js']
-    }    
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          base: 'app',
+          hostname: '*',
+          debug: true,
+          open: true
+        }
+      }    
+    },
+    'http-server': {
+      dev: {
+        root: 'app',
+        port: 8000,
+        host: "0.0.0.0",
+        cache: 10,
+        showDir : true,
+        autoIndex: true,
+        ext: "html",
+
+        // run in parallel with other tasks 
+        runInBackground: true,
+
+        // specify a logger function. By default the requests are 
+        // sent to stdout. 
+        //logFn: function(req, res, error) { },
+
+        openBrowser : true
+      }
+    }
   });
 
   // Load the plugin that provides the "uglify" task.
@@ -59,7 +90,14 @@ module.exports = function (grunt) {
     // Load the plugin that provides the "jshint" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');  
 
+  // connect plugin
+  grunt.loadNpmTasks('grunt-contrib-connect');
+
+  // http-server plugin
+  grunt.loadNpmTasks('grunt-http-server');
+
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'concat']);
+  grunt.registerTask('default', ['uglify', 'concat', 'connect', 'watch']);
+  grunt.registerTask('http-server', ['uglify', 'concat', 'http-server', 'watch']);
 
 };
