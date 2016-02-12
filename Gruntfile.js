@@ -3,6 +3,32 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: {
+      build: {
+        src: [ 'build' ]
+      },
+      css: {
+        src: [ 'build/css/*', '!build/css/full.min.css' ]
+      },
+      js: {
+        src: [ 'build/js/*', '!build/js/full.min.js' ]
+      }
+    },    
+    copy: {
+      build: {
+        cwd: 'app',
+        src: [ '**' ],
+        dest: 'build',
+        expand: true
+      }
+    },
+    cssmin: {
+      build: {
+        files: {
+          'build/css/full.min.css': [ 'build/css/*.css' ]
+        }
+      }
+    },    
     uglify: {
       options: {
         mangle: true
@@ -10,9 +36,9 @@ module.exports = function (grunt) {
       build: {
         files: [{
           expand: true,
-          cwd: 'app/js/',
+          cwd: 'build/js/',
           src: ['*.js', '**/*.js'],
-          dest: 'app/js-min/',
+          dest: 'build/js/',
           ext: '.min.js'
         }]
       }
@@ -24,18 +50,14 @@ module.exports = function (grunt) {
         banner: '/*!\n * <%= pkg.name %> v<%= pkg.version %>\n */\n'
       },
       dist: {
-        src: ['app/js-min/**/*.js'],
-        dest: 'app/js-dist/full.min.js',
-      },
-      dev: {
-        src: ['app/js/**/*.js'],
-        dest: 'app/js-dist/full.js',
-      }      
+        src: ['build/js/**/*.min.js'],
+        dest: 'build/js/full.min.js',
+      }
     },
     watch: {
-      scripts: {
-        files: ['app/js/**/*.js'],
-        tasks: ['uglify', 'concat'],
+      build: {
+        files: ['app/**/*'],
+        tasks: ['build'],
         options: {
           spawn: false,
           interrupt: true
@@ -46,7 +68,7 @@ module.exports = function (grunt) {
       all: ['Gruntfile.js', 'app/js/**/*.js']
     },
     connect: {
-      server: {
+      dev: {
         options: {
           port: 8000,
           base: 'app',
@@ -54,27 +76,16 @@ module.exports = function (grunt) {
           debug: true,
           open: true
         }
+      },
+      prod: {
+        options: {
+          port: 8000,
+          base: 'build',
+          hostname: '*',
+          debug: true,
+          open: true
+        }
       }    
-    },
-    'http-server': {
-      dev: {
-        root: 'app',
-        port: 8000,
-        host: "0.0.0.0",
-        cache: 10,
-        showDir : true,
-        autoIndex: true,
-        ext: "html",
-
-        // run in parallel with other tasks 
-        runInBackground: true,
-
-        // specify a logger function. By default the requests are 
-        // sent to stdout. 
-        //logFn: function(req, res, error) { },
-
-        openBrowser : true
-      }
     }
   });
 
@@ -93,11 +104,22 @@ module.exports = function (grunt) {
   // connect plugin
   grunt.loadNpmTasks('grunt-contrib-connect');
 
-  // http-server plugin
-  grunt.loadNpmTasks('grunt-http-server');
+  // copy
+  grunt.loadNpmTasks('grunt-contrib-copy');
+
+  // clean
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
+  // css minification
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'concat', 'connect', 'watch']);
-  grunt.registerTask('http-server', ['uglify', 'concat', 'http-server', 'watch']);
+  grunt.registerTask('default', ['dev']);
+  // run developer version
+  grunt.registerTask('dev', ['connect:dev', 'watch']);
+  // run production version (minified)
+  grunt.registerTask('prod', ['build', 'connect:prod', 'watch']);
+  // build only (minify, concat, etc)
+  grunt.registerTask('build', ['clean:build', 'copy', 'cssmin', 'clean:css', 'uglify', 'concat', 'clean:js']);
 
 };

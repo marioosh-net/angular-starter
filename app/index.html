@@ -3,7 +3,12 @@
   <head>
     <title>{{title}}</title>
     <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- dev -->
     <link href="css/sticky-footer.css" rel="stylesheet">
+    <!-- dev end -->
+    <!-- prod -->
+    <link href="css/full.min.css" rel="stylesheet">
+    <!-- prod end -->
 	<script src="libs/jquery/dist/jquery.min.js"></script>
 	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
   </head>
@@ -43,10 +48,11 @@
     <script src="libs/angular-route/angular-route.min.js"></script>
     <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     
-    <!-- PROD -->
-    <script src="js-dist/full.min.js"></script>
+    <!-- prod -->
+    <script src="js/full.min.js"></script>
+    <!-- prod end -->
 
-    <!-- DEVEL 
+    <!-- dev -->
     <script src="js/app.js"></script>
 
     <script src="js/modules/main/mainModule.js"></script>
@@ -59,7 +65,7 @@
 
     <script src="js/modules/maps/mapsModule.js"></script>
     <script src="js/modules/maps/directives.js"></script>    
-    -->
+    <!-- dev end -->
 
   </body>
 </html>

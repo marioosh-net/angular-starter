@@ -4,24 +4,27 @@
   "version": "1.0.0",
   "description": "angular starter project",
   "author": "marioosh",
-  "license": "MIT",  
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marioosh-net/angular-starter.git"
   },
   "devDependencies": {
     "bower": "^1.3.1",
-    "http-server": "^0.6.1",
     "grunt": "~0.4.5",
-    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-jshint": "~0.12.0",
     "grunt-contrib-connect": "^0.11.2",
-    "grunt-http-server": "^1.14.0"
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "~0.12.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-http-server": "^1.14.0",
+    "http-server": "^0.6.1"
   },
   "scripts": {
-    "prestart": "npm install",    
+    "prestart": "npm install",
     "postinstall": "bower install",
     "start": "grunt -v"
   },
